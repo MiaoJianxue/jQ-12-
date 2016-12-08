@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="崔传腾/js/jquery-1.7.2.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+        }
+        .banner{
+            width: 1000px;
+            margin:50px auto;
+            height: 450px;
+            border: 1px solid #000;
+            overflow:hidden;
+        }
+        .list{
+            width: 1500px;
+        }
+        .list li{
+            width: 200px;
+            height: 450px;
+            background-size: cover;
+            float: left;
+            /*list-style: none;*/
+        }
+        li a{
+            display: block;
+            height: 100%;
+          }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul class="list">
+        <li style="background-image:url(崔传腾/images/b1.jpg)"><a href="#"></a></li>
+        <li style="background-image:url(崔传腾/images/b2.jpg)"><a href="#"></a></li>
+        <li style="background-image:url(崔传腾/images/b3.jpg)"><a href="#"></a></li>
+        <li style="background-image:url(崔传腾/images/b4.jpg)"><a href="#"></a></li>
+        <li style="background-image:url(崔传腾/images/b5.jpg)"><a href="#"></a></li>
+    </ul>
+</div>
+</body>
+<script>
+//    当鼠标悬停在li标签上时，让当前这个li的宽度为500，其他为125，当鼠标在ul上时，所有的图片宽度回归到200
+    $(".banner li").hover(function () {
+        $(this).stop().animate({width:"500px"}).siblings().stop().animate({width:"125px"})
+    },function () {
+        $(this).parent().children().stop().animate({width:"200px"})
+    })
+</script>
+</html>

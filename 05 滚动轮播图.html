@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        img{
+            display: block;
+            width:1000px;
+            height: 450px;
+        }
+        .banner{
+            width: 1000px;
+            height: 450px;
+            border: 2px solid #333;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .list li{
+            position: absolute;
+        }
+
+        .btn{
+            font:14px/2.5em "微软雅黑";
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            z-index: 2;
+        }
+        .btn li{
+            float: left;
+            width: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            background: salmon;
+            margin: 0 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .btn .on{
+            background: slateblue;
+        }
+        .list .on{
+            z-index: 1;
+        }
+
+        .arrow{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            text-align: center;
+            line-height: 60px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            z-index: 2;
+        }
+        .right{
+            right: 0;
+        }
+        .arrow:hover{
+            background: rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+    </style>
+    <script src="崔传腾/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div class="banner">
+    <ul class="list">
+        <li><a href="#"><img src="崔传腾/images/b1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="崔传腾/images/b2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="崔传腾/images/b3.jpg" alt=""></a></li>
+        <li><a href="#"><img src="崔传腾/images/b4.jpg" alt=""></a></li>
+        <li><a href="#"><img src="崔传腾/images/b5.jpg" alt=""></a></li>
+    </ul>
+    <ul class="btn">
+        <li class="on">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <a href="#" class="arrow left">&lt</a>
+    <a href="#" class="arrow right">&gt</a>
+</div>
+
+</body>
+<script>
+//    1.获取元素
+var index = 0;
+var list = $(".list li ");
+var btn = $(".btn li");
+var arrow = $(".arrow");
+var banner = $(".banner")
+var timer = null;
+//    2.点击按钮的时候，对应的图片出现，兄弟图片隐藏，当前按钮添加类，其他移除类
+function demo(num) {
+    list.eq(num).stop().fadeIn().siblings().stop().fadeOut();
+    btn.eq(num).addClass("on").siblings().removeClass("on")
+}
+btn.click(function () {
+    demo(index = $(this).index())
+})
+//    3.点击左箭头，设置边界
+arrow.eq(0).click(function () {
+    index--;
+    index = index < 0 ? list.length - 1 : index;
+    demo(index)
+});
+//    4.点击右箭头的时候设置边界
+arrow.eq(1).click(function () {
+    index++;
+    index = index > list.length - 1 ? 0 : index;
+    demo(index)
+})
+
+//    5.自动播放的时候和点击右箭头的原理差不多
+function play() {
+    index++;
+    index = index > list.length - 1 ? 0 : index;
+    demo(index)
+
+}
+//    6.开启定时器时，调用自动播放函数
+banner.hover(function () {
+    clearInterval(timer)
+}, function () {
+    timer = setInterval(play, 1000)
+})
+</script>
+</html>

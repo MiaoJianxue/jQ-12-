@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="崔传腾/js/jquery-1.7.2.min.js"></script>-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ad{
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+
+        .ad .close{
+            position: absolute;
+            right: 0;
+            width: 30px;
+            line-height: 30px;
+            text-align: center;
+            top: 0;
+            cursor: pointer;
+            color: #666;
+            font-size: 20px;
+        }
+        .ad .close:hover{
+            color: #000;
+            font-weight: bold;
+        }
+        .ad img{
+            display: block;
+            margin: 10px;
+        }
+        .right{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ad">
+    <span class="close">&times;</span>
+    <a href="#"><img src="崔传腾/images/1.gif" alt=""></a>
+ </div>
+</body>
+<script>
+//    $(".ad .close").click(function () {
+//        $(this).parent().hide();
+//    })
+    var ad=document.querySelector(".ad");
+    ad.onclick=function () {
+        this.style.display="none"
+    }
+</script>
+</html>

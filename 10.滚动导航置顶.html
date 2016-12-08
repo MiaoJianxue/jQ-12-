@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="崔传腾/js/jquery-1.7.2.min.js"></script>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+        .header{
+            font:36px/4em "微软雅黑";
+            text-align: center;
+            background: #ccc;
+        }
+
+        .fixed{
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+
+        }
+    </style>
+</head>
+<body>
+<div class="header">打酱油的</div>
+<div class="nav">
+    <img src="崔传腾/images/nav.png" />
+</div>
+<div class="content">
+    <img src="崔传腾/images/content.png"/>
+</div>
+</body>
+<script>
+    var nav = $(".nav")
+    var header = nav.prev();
+    var hTop = header.height() + header.offset().top;
+    $(window).scroll(function () {
+        var sTop=$(this).scrollTop();
+        nav[(sTop>=hTop?'add':'remove')+'Class']('fixed')
+    })
+
+
+
+
+
+</script>
+</html>

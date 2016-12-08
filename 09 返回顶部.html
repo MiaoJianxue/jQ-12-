@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .backtop{
+            position: fixed;
+            right:0;
+            bottom:100px;
+            display: none;
+
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+    <script src="崔传腾/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<img src="崔传腾/images/top.gif" class="backtop"  alt="">
+</body>
+<script>
+//$(window).scroll(function () {
+//    var sTop=$(this).scrollTop();
+//    if(sTop>100){
+//        $(".backtop").show()
+//    }
+//    $(".backtop").hide()
+//});
+$(window).scroll(function(){
+
+    var sTop = $(this).scrollTop();
+
+    $('.backtop')[sTop>100?'show':'hide']();
+
+});
+    $(".backtop").click(function () {
+        $("body,html").animate({scrollTop:0})
+    })
+</script>
+</html>
